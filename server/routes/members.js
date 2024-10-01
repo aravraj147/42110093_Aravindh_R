@@ -1,15 +1,16 @@
-const express = require('express');
-const router = express.Router();
-const Member = require('../models/member');
+import { Router } from 'express';
+const router = Router();
+import { find } from '../models/member.js';
 
 // GET all members
 router.get('/', async (req, res) => {
   try {
-    const members = await Member.find();
+    const members = await find();
     res.json(members);
   } catch (err) {
     res.status(500).send(err);
   }
 });
 
-module.exports = router;
+export default router;
+
